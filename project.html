@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>problme-1</title>
+</head>
+<body>
+    <h1>Enter The Price:</h1>
+    <p id="price">  </p>
+    <h1>Enter The quantity:</h1>
+    <p id="quantity">  </p>
+    <h1>Total Cost:</h1>
+    <p id="totalcost">  </p>
+</body>
+</html>
+<script>
+    let price = prompt("enter the price:")
+    document.getElementById("price").innerHTML = price
+    console.log(price)
+    let quantity = prompt("enter the quantity")
+    document.getElementById("quantity").innerHTML = quantity
+    console.log(quantity)
+
+    if(!isNaN(price) && quantity>0){
+        let totalcost = price * quantity
+        document.getElementById("totalcost").innerHTML = totalcost
+        console.log(totalcost)
+    }
+    else{
+        console.log("plaese enter the valid quantity!!")
+    }
+</script>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problme-2</title>
+</head>
+<body>
+    <h1>enter the height:</h1>
+    <h2 id="height">  </h2>
+    <h1>enter the weight:</h1>
+    <h2 id="weight">  </h2>
+    <h1>your BMI is:</h1>
+    <h2 id="BMI">  </h2>
+</body>
+</html>
+<script>
+    let weight = prompt("enter the weight")
+    document.getElementById("weight").innerHTML = weight
+    console.log(weight)
+    let height = prompt("enter the height")
+    document.getElementById("height").innerHTML = height
+    console.log(height)
+    
+    if(weight>0 && height>0){
+        let BMI = weight / (height * height)
+        document.getElementById("BMI").innerHTML = BMI
+        console.log(BMI) 
+    }
+    else{
+        console.log("entr the height width")   
+    }
+</script>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>problme-3</title>
+</head>
+<body>
+    <h1> enter the distance travelled in meteres: </h1>
+    <h2 id="travel">  </h2>
+    <h1> enter the time taken in seconds: </h1>
+    <h2 id="time">  </h2>
+    <h1> the speed is <span id="speed">  </span>MS/s</h1>
+</body>
+</html>
+<script>
+    let travel = prompt("enter the travelled distance in meters:")
+    document.getElementById("travel").innerHTML = travel
+    console.log(travel)
+
+    let time = prompt("enter the time taken in seconds:")
+    document.getElementById("time").innerHTML = time
+    console.log(time)
+        
+    let speed = travel / time;
+    document.getElementById("speed").innerHTML = speed
+    console.log(speed)   
+</script>
