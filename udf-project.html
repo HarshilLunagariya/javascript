@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+
+    // question 1
+
+    function sum(a, b) {
+
+        let c = 0
+
+        c = a + b
+
+        console.log(c)
+
+    }
+
+    // sum(2,6)
+
+    // question 2
+
+    function area(x, y) {
+
+        let c = 0
+
+        c = x * y
+
+        console.log(c)
+    }
+
+    // area(3,6)
+
+    // question 3
+
+    function con(a, b) {
+
+        let c = 0
+
+        c = a + b
+
+        console.log(c)
+
+    }
+
+    // con("hello", "sir")
+
+    // question 4
+
+    function square(p) {
+
+        let q
+
+        q = p * p
+
+        console.log(q)
+
+    }
+
+    // square(4) 
+
+    // question 5 
+
+    function len(a) {
+
+        console.log(a.length)
+    }
+
+    // len("harshil") 
+
+    // question 6
+
+    function hasAAtStartOrEnd(str) {
+        // Check if the string starts with "A" or ends with "A"
+        if (str.charAt(0) === 'A' || str.charAt(str.length - 1) === 'A') {
+            return true;
+        }
+        return false;
+    }
+
+    // hasAAtStartorEnd(Abc)
+
+    // question 7
+
+    function chagetemp(celsius) {
+        let faherenheit = (celsius * 9 / 5) + 32;
+        return faherenheit;
+    }
+
+    // changetemp(23)
+
+    // question 8
+
+    function productofdigit(number) {
+        let product = 1;
+
+        while (number > 0) {
+            let digit = number % 10;
+            product *= digit;
+            number = Math.floor(number / 10);
+        }
+        return product;
+    }
+
+    // productofdigit(23)
+
+    // question 9
+
+    function threenumberofsum(num1, num2, num3) {
+        let sum = num1 + num2 + num3;
+        return sum
+    }
+
+    // threenumberofsum(3,5,4)
+
+    // question 10
+
+    let factorial = (n) => n <= 1 ? 1 : n * factorial(n - 1)
+
+    console.log(factorial(5))
+
+    // question 11
+
+    let DoubleNumber = (num) => num = num * 2;
+
+    console.log(DoubleNumber(7))
+
+    // question 12
+
+    let DoubleNumber = (num) => num = num * 2;
+
+    console.log(DoubleNumber(7))
+
+    // question 13
+
+    let darkMode = true;
+    console.log(darkMode ? "ON" : "OFF");
+    
+</script>
