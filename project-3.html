@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    let arr=[1,2,3,4,5]
+
+    // question 1
+
+    arr.forEach((el,i)=>{
+
+        console.log(el*3)
+
+    })
+
+    // question 2
+
+   let x = arr.reduce((sum,el)=>{
+
+        return sum=sum+el
+
+    },0)
+
+    console.log(x)
+
+    // question 3
+
+    let p=arr.reduce((adde,el)=>{
+
+        return adde+el
+    },0)
+
+    console.log(p)
+
+    // question 4
+
+    let arrr = [1,2,3,4,5,6,7,8,9]
+
+let arrfilter = arrr.filter((el,i)=>{
+    return el % 2 == 0
+})
+
+let arrreduce = arrr.reduce((sum,el)=>{
+    return sum + el
+},0)
+
+console.log(arrreduce)
+
+    // question 5
+
+    let arr = ["apple","banana","orange","grape","pineapple"]
+
+    let arr1 = arr.filter((el,i)=>{
+        if(el.length > 4){
+            return el;
+        }
+    })
+
+    let FindLength = arr1.map((el,i)=>{
+        return el.length
+    })
+
+    console.log(FindLength)
+
+    // question 6
+
+    let arr = [12,25,78,56,20,59,66,61,55,85]
+
+let findelement = arr.includes(56)
+
+let findelement_1 = arr.includes(100)
+
+console.log(findelement,findelement_1)
+
+    // question 7
+
+    function square(){
+        let arr = [1,2,3,4,5,6,7,8,9,10]
+
+        let even = arr.filter((el,i)=>{
+            return el%2==0
+        }) 
+
+        let square = even.map((el,i)=>{
+            return el * el
+        })
+
+        console.log(square)
+    }
+
+
+    // question 8
+
+    let arr = ["apple", "banana", "jay", "smit", "pineapple", "jhon"]
+    let arr_1 = arr.filter((el, i) => {
+        if (el.length <= 5) {
+            return el.length
+        }
+    })
+
+    let arr_2 = arr_1.map(el => el.toUpperCase())
+    console.log(arr_2)
+
+
+</script>
+</html>

@@ -46,8 +46,10 @@
 </head>
 <body>
     <h1>OUR PRODUCTS</h1>
+    <span>cart:</span>
+        <span id="crt"></span>
     <div id="main">
-
+        
     </div>
 </body>
 </html>
@@ -66,6 +68,10 @@
     })
 
     let main = document.getElementById("main")
+    let ct = document.getElementById("crt")
+
+    let count=0
+
     function displaydata(data){
         data.forEach((el,i) => {
             let innerdiv = document.createElement("div")
@@ -82,11 +88,25 @@
             let button = document.createElement("button")
             button.className="btn"
             button.innerHTML="ADD TO CART"
-            button.onclick= function(){
+            button.onclick= function alert(){
 
                 alert("this is harmful")
+
+                CartArray.push(el)
+
+                
             
             }
+
+            button.onclick=function cou(){
+                count++
+            crt.innerHTML=count
+            }
+
+            
+           
+            
+
             innerdiv.append(img,p,button)
             main.append(innerdiv)
         });
