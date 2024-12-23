@@ -4,75 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<style>
-    #main{
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        gap: 10px;
-        justify-content: space-around;
-    }
-    .innerdiv{
-        height: auto;
-        width: 20%; 
-        /* border: 1px solid #000; */
-    }
-    .img{
-        height: 80%;
-        width: 100%;
-        object-fit: cover;
-        border-radius: 10px;
-        box-shadow: 1px 1px 10px black;
-        /* border: 1px solid #000; */
-    }
-    .p{
-        text-shadow: 2px 2px 1px rgb(150, 143, 143);
-        font-size: 1.3rem;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-    h1{
-        text-align: center;
-        /* text-shadow: 5px 20px 4px black; */
-        font-size: 2rem;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
-
-    .btn{
-
-        height: 35px;
-        border-radius: 4px;
-    }
-</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .navbar{
+            height: 10vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            font-family: fantasy;
+            /* border: 1px solid #000; */
+        }
+        .logo{
+            height: 100%;
+            width: 13%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* border: 1px solid #000; */
+        }
+        .nav{
+            height: 100%;
+            width: 82%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            /* border: 1px solid #000; */
+        }
+        li,a{
+            text-decoration: none;
+            color: #000;
+            list-style-type: none;
+            font-size: 1.2rem;
+        }
+        .cartpart{
+            height: 100%;
+            width: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* border: 1px solid #000; */
+        }
+        #product{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; 
+        }
+        .icon{
+            text-decoration: none;
+            color: #000;
+            font-size: 2.1rem;
+        }
+        .innerdiv{
+            height: auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            place-items: center;
+            place-content: center;
+            /* border: 1px solid #000; */
+        }
+        .img{
+            height: 70%;
+            width: 70%;
+            margin: 3%;
+            object-fit: cover;
+        }
+        .p{
+            font-size: large;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: 900;
+            margin: 3%;
+        }
+        .btn{
+            height: 6vh;
+            width: 10vw;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(73, 73, 249);
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+    </style>
 </head>
-<body>
-    <h1>OUR PRODUCTS</h1>
-    <span>cart:</span>
-        <span id="crt"></span>
-    <div id="main">
-        
+<body>    
+    <div class="navbar">
+        <div class="logo">
+            <h1> Products </h1>
+        </div>
+        <div class="nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">Products</a></li>
+        </div>
+        <div class="cartpart">
+            <a href="./cart.html"><i class = "fa-solid fa-bag-shopping icon"></i></a>
+            <span id="cart"
+            style = "font-family: monospace; font-size: 2.1rem;">0</span>
+        </div>
     </div>
+    <div id="product"></div>
 </body>
 </html>
 <script>
+
     fetch("https://fakestoreapi.com/products")
-    .then((res)=>{
-        console.log(res)
+    .then((res)=> {
         return res.json()
     })
     .then((res)=>{
-        console.log(res)
-        displaydata(res)
+        let data = res;
+        localStorage.setItem("product", JSON.stringify(data))
     })
     .catch((err)=>{
         console.log(err)
     })
 
-    let main = document.getElementById("main")
-    let ct = document.getElementById("crt")
+    let main = document.getElementById("product")
+    let crt = document.getElementById("cart")
+    let count = 0;
 
-    let count=0
 
-    function displaydata(data){
+    let cartArray = JSON.parse(localStorage.getItem("cart"))||[]
+
+    function displaydata(){
+        let data = JSON.parse(localStorage.getItem("product"))
+        console.log(data , "bsvjbskbkj")
         data.forEach((el,i) => {
             let innerdiv = document.createElement("div")
             innerdiv.className = "innerdiv"
@@ -85,32 +150,26 @@
             p.className = "p"
             p.innerText = el.category
 
-            let button = document.createElement("button")
-            button.className="btn"
-            button.innerHTML="ADD TO CART"
-            button.onclick= function alert(){
+            let btn = document.createElement("button")
+            btn.className = "btn"
+            btn.innerHTML = "Add to Cart"
 
-                alert("this is harmful")
-
-                CartArray.push(el)
-
-                
-            
-            }
-
-            button.onclick=function cou(){
-                count++
-            crt.innerHTML=count
-            }
+            btn.addEventListener('click' , () =>{
+                count++;
+                crt.textContent = count;
+                alert(`product add to cart`)
+                cartArray.push(el)
+                localStorage.setItem("cart",JSON.stringify(cartArray))
+            })
 
             
-           
-            
 
-            innerdiv.append(img,p,button)
+        
+
+            innerdiv.append(img,p,btn)
             main.append(innerdiv)
-        });
+        })
     }
 
-   
+    displaydata()
 </script>
