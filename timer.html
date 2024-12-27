@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    #content{
+
+        border: 1px solid black;
+        height: 100px;
+        font-size: xx-large;
+    }
+
+</style>
+<body>
+    <h1 id="h1">I am Harshil Lunagariya...</h1>
+
+    <div id="content"></div>
+
+    <div id="abc">
+
+       
+
+
+    </div>
+</body>
+<script>
+
+    setTimeout(()=>{
+
+        let h=document.getElementById("h1")
+
+        h.innerHTML="I am Student"
+
+
+    },1000)
+
+    setTimeout(()=>{
+
+let abc=document.getElementById("abc")
+
+abc.innerHTML=" timeup!!"
+
+
+},11000)
+
+    let timer=10
+
+    let interval = setInterval(()=>{
+
+        let c=document.getElementById("content")
+
+        c.innerHTML=`timer: ${timer}`
+
+        timer--
+
+        if(timer<0){
+
+            clearInterval(interval)
+
+        }
+
+    },1000)
+
+
+</script>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // question 1
+
+    let arr = [1, 2, 3, 4]
+
+    let x = arr.map((num, el) => {
+
+        return num = num * 2
+
+    })
+
+    console.log(x)
+
+    // question 2
+
+    let abc = ["apple", "banana", "cherry"]
+
+    let y = abc.map((el, numb) => {
+
+
+        return numb = el.length
+
+    })
+
+    console.log(y)
+
+    // question 3
+
+    let input = [{ name: "Alice" }, { name: "Bob" }, { name: "Charlie" }];
+
+    let z = input.map((item)=>{
+    
+    
+        return item=item.name
+    
+    
+    });
+
+    console.log(z);
+
+    // question 4
+
+    let arr1=[1,2,3,4,5,6]
+
+    let h=arr1.filter((odd)=>{
+
+        if(odd%2==0){
+
+            return odd
+        }
+
+    })
+
+    console.log(h)
+
+    // sub question 
+
+    let arr2=["apple","is","good","pineapple"]
+
+    let a=arr2.filter((len)=>{
+
+        if(len.length >= 5){
+
+            return len
+        }
+
+    })
+
+    console.log(a)
+
+    // question 5
+
+    let arr3=[10,20,30,40]
+
+    let b = arr3.reduce((sum,el)=>{
+
+        return sum=sum+el
+
+    },0)
+
+    console.log(b)
+
+    // question 6
+
+    let arr4=[3,7,2,9,4]
+
+    let c=arr4.reduce((max,el)=>{
+
+        if(el>max){
+
+            return el
+        }
+        else{
+
+            return max
+        }
+
+    },0)
+
+    console.log(c)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

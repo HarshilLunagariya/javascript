@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Validation</title>
+</head>
+<body>
+    <form id="myform">
+        <input type="text" placeholder="enter the your name" id="name" required>
+        <input type="number" placeholder="enter the number" id="number" required>
+        <input type="password" placeholder="enter the passowrd" id="pass" required>
+        <input type="password" placeholder="enter the conform passowrd" id="confrom" required>
+        <input type="Submit" value="Submit">
+    </form>
+</body>
+</html>
+<script>
+    let form = document.getElementById("myform")
+    form.addEventListener("submit",(e)=>{
+        e.preventDefault()
+        let name = document.getElementById("name").value
+        let num = document.getElementById("number").value
+        let pass = document.getElementById("pass").value
+        let confirm = document.getElementById("confrom").value
+
+        if(num.length < 10){
+            alert("Phone number should be requried 10 digit")
+        }
+
+        if(pass !== conform){
+            alert("both password should be same")
+        }
+
+        console.log(name,num,pass,confirm)
+    })
+</script>
