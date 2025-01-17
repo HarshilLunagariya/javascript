@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    let students = [
+        { name: "John", marks: 75, subject: "Math", rollNumber: 12 },
+        { name: "Alice", marks: 45, subject: "Science", rollNumber: 18 },
+        { name: "Bob", marks: 62, subject: "English", rollNumber: 21 },
+        { name: "Charlie", marks: 55, subject: "History", rollNumber: 16 },
+        { name: "David", marks: 85, subject: "Math", rollNumber: 25 }
+    ];
+
+    // question 1
+
+    let uprcase = students.map((el) => {
+        return el.name.toUpperCase();
+    });
+
+    console.log(uprcase);
+
+    // question 2
+
+    let abvsixty = students.filter((el) => {
+
+        return el.marks > 60
+
+    })
+
+    console.log(abvsixty)
+
+    // question 3
+
+    let ques = students.filter((el) => {
+
+        return el.marks > 60 && el.rollNumber > 15
+
+    })
+
+    console.log(ques)
+
+    // question 4
+
+    let reduce = students.reduce((sum, el) => {
+
+        return sum + el.marks
+
+    }, 0)
+
+    console.log(reduce)
+
+    // question 5
+
+    let greatersixty = students.filter((el) => {
+
+        return el.marks > 60
+
+    })
+
+    console.log(greatersixty)
+
+    // question 6
+
+    let addtwenty = students.map((el) => {
+
+        return el.marks + 20
+
+    })
+
+    console.log(addtwenty)
+
+</script>
+
+</html>

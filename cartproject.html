@@ -18,7 +18,7 @@
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        font-family: fantasy;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         /* border: 1px solid #000; */
     }
     .logo{
@@ -43,63 +43,67 @@
         list-style-type: none;
         font-size: 1.2rem;
     }
-    .cartpart{
-        height: 100%;
-        width: 5%;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        /* border: 1px solid #000; */
-    }
     #product{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px; 
-    }
-    .icon{
-        text-decoration: none;
-        color: #000;
-        font-size: 2.1rem;
+        gap: 20px;
     }
     .innerdiv{
-        height: auto;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        place-items: center;
-        place-content: center;
-        /* border: 1px solid #000; */
+        height:391px;
+        width:391px;
+        border: 2px solid grey;
+        border-radius: 10px;
+    }
+    .innerdiv:hover{
+        box-shadow: 2px 2px 6px gray;
+        transition: 0.4s;
     }
     .img{
-        height: 70%;
-        width: 70%;
-        margin: 3%;
-        object-fit: cover;
+        height: 50%;
+        width: 50%;
+        margin: 3% 25%;
+        /* object-fit: cover; */
     }
     .p{
-        font-size: large;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        font-weight: 900;
-        margin: 3%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        text-align: center;
+        margin: 5%;
+        font-size: 1.2rem;
+    }
+    .price{
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        margin: 5%;
     }
     .btn{
         height: 6vh;
         width: 10vw;
         border-radius: 5px;
         border: none;
-        background-color: rgb(73, 73, 249);
+        background-color:black;
         color: white;
         font-size: 0.9rem;
         font-weight: 400;
+        margin-left: 34%;
+    }
+    #product{
+
+        /* border: 1px solid black; */
+        height: auto;
+        width: 97%;
+           display: flex;
+           flex-wrap: wrap;
+            gap: 23px; 
     }
 </style>
 <body>    
     <div class="navbar">
         <div class="logo">
-            <h1> Products </h1>
+            <h1>E-KART</h1>
         </div>
         <div class="nav">
-            <li><a href="append.html">Home</a></li>
+            <li><a href="productproject.html">Home</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Register</a></li>
@@ -110,7 +114,7 @@
             <span id="cart"
             style = "font-family: monospace; font-size: 2.1rem;">0</span> -->
         </div>
-    </div>
+    </div><br>
     <div id="product"></div>
 </body>
 </html>
@@ -135,17 +139,12 @@
     // let Cart = []
     // let data = JSON.parse(localStorage.getItem("Cart"))
     // conosle.log(data)   
-    
+
     function displaydata(){
-        let data = JSON.parse(localStorage.getItem("cart"));
-        console.log(data)
-
-        product.innerHTML=""
-
+        let data = JSON.parse(localStorage.getItem("cart"))
+        // console.log(data)
+        product.innerHTML = "";
         data.forEach((el,i)=>{
-
-
-
             let innerdiv = document.createElement("div")
             innerdiv.className = "innerdiv"
 
@@ -157,38 +156,30 @@
             p.className = "p"
             p.innerText = el.category;
 
-            let dltbtn=document.createElement("button")
-            dltbtn.innerText="delete"
-            dltbtn.addEventListener("click",()=>{
+            let price = document.createElement("p")
+            price.className = "price"
+            price.innerText = el.price
+            
+            let btn = document.createElement("button")
+            btn.className = "btn"
+            btn.innerText = "Delete"
 
-                deleteitem(i)
+            btn.addEventListener('click', () => {
+                Deletedata(i)
+                // alert(detele your cart items.)
             })
 
-            
-            // let btn = document.createElement("button")
-            // btn.className = "btn"
-            // btn.innerText = "Add To Cart"
-
-            // btn.addEventListener('click', () => {
-            //     Cart.push(el)
-            //     alert(${el.category} has been add your cart.)
-            // })
-            innerdiv.append(img,p,dltbtn)
+            innerdiv.append(img,p,price,btn)
             product.append(innerdiv)
         })
     }
 
     displaydata()
 
-    function deleteitem(index){
-
-        let cartdata = JSON.parse(localStorage.getItem("cart"))
-
-        cartdata.splice(index,1)
-
-        localStorage.setItem("cart",JSON.stringify(cartdata))
-
+    function Deletedata(index){
+        let cartData = JSON.parse(localStorage.getItem("cart"))
+            cartData.splice(index,1)
+            localStorage.setItem("cart" , JSON.stringify(cartData))
         displaydata()
-
-    }
+    }
 </script>

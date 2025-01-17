@@ -17,7 +17,7 @@
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            font-family: fantasy;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             /* border: 1px solid #000; */
         }
         .logo{
@@ -51,7 +51,9 @@
             /* border: 1px solid #000; */
         }
         #product{
+            width: 97%;
             display: grid;
+            margin-left: 1.5%;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px; 
         }
@@ -63,19 +65,26 @@
         .innerdiv{
             height: auto;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            place-items: center;
-            place-content: center;
-            /* border: 1px solid #000; */
+            /* display: flex; */
+            /* flex-direction: column; */
+            /* place-items: center; */
+            /* place-content: center; */
+            border-radius: 5px;
+            border: 2px solid grey;
+        }
+        .innerdiv:hover{
+            box-shadow: 2px 2px 6px grey;
+            border-radius: 5px;
+            transition: 0.4s;
         }
         .img{
-            height: 70%;
-            width: 70%;
-            margin: 3%;
-            object-fit: cover;
+            height: 50%;
+            width: 50%;
+            margin: 3% 25%;
+            /* object-fit: cover; */
         }
         .p{
+            text-align: center;
             font-size: large;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             font-weight: 900;
@@ -86,7 +95,8 @@
             width: 10vw;
             border-radius: 5px;
             border: none;
-            background-color: rgb(73, 73, 249);
+            margin-left: 45px;
+            background-color:black;
             color: white;
             font-size: 0.9rem;
             font-weight: 400;
@@ -96,7 +106,7 @@
 <body>    
     <div class="navbar">
         <div class="logo">
-            <h1> Products </h1>
+            <h1>E-KART</h1>
         </div>
         <div class="nav">
             <li><a href="#">Home</a></li>
@@ -106,9 +116,9 @@
             <li><a href="#">Products</a></li>
         </div>
         <div class="cartpart">
-            <a href="./cart.html"><i class = "fa-solid fa-bag-shopping icon"></i></a>
+            <a href="cartproject.html"><i class = "fa-solid fa-bag-shopping icon" style="font-size: x-large;"></i></a>
             <span id="cart"
-            style = "font-family: monospace; font-size: 2.1rem;">0</span>
+            style = "font-family: monospace; font-size: 2.1rem; font-size: xx-large; margin-right: 20px;">0</span>
         </div>
     </div>
     <div id="product"></div>
@@ -136,8 +146,9 @@
     let cartArray = JSON.parse(localStorage.getItem("cart"))||[]
 
     function displaydata(){
-        let data = JSON.parse(localStorage.getItem("product"))
-        console.log(data , "bsvjbskbkj")
+        let data = JSON.parse(localStorage.getItem("product"))||[]
+        console.log(data)
+        product.innerHTML = ""
         data.forEach((el,i) => {
             let innerdiv = document.createElement("div")
             innerdiv.className = "innerdiv"
@@ -150,6 +161,10 @@
             p.className = "p"
             p.innerText = el.category
 
+            let price = document.createElement("p")
+            price.className = "p"
+            price.innerText = el.price
+
             let btn = document.createElement("button")
             btn.className = "btn"
             btn.innerHTML = "Add to Cart"
@@ -157,19 +172,34 @@
             btn.addEventListener('click' , () =>{
                 count++;
                 crt.textContent = count;
-                alert(`product add to cart`)
+                alert("product add to cart")
                 cartArray.push(el)
                 localStorage.setItem("cart",JSON.stringify(cartArray))
             })
 
-            
+            let editbtn = document.createElement("button")
+            editbtn.className = "btn"
+            editbtn.innerText = "edit"
+            editbtn.addEventListener("click", ()=> {
+                edit(i)
+            })
 
-        
-
-            innerdiv.append(img,p,btn)
+            innerdiv.append(img,p,price,btn,editbtn)
             main.append(innerdiv)
         })
     }
 
     displaydata()
+
+    function edit(index){
+        let product = JSON.parse(localStorage.getItem("product"))||[]
+        
+        let x = prompt("enter updated price")
+        x = Number(x)
+        product[index].price = x
+        if(x){
+            localStorage.setItem("product", JSON.stringify(product))
+        }
+        displaydata()
+    }
 </script>
